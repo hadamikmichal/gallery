@@ -1,0 +1,31 @@
+import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { PhotoLibraryService } from '../photo-library.service';
+
+@Component({
+  selector: 'app-favorites',
+  standalone: true,
+  imports: [RouterLink, MatButtonModule, MatIconModule],
+  template: `
+    <section class="favorites-page">
+      <p class="eyebrow">YOUR PERSONAL COLLECTION</p>
+      <div class="heading-row"><div><h1>Things you <em>love.</em></h1><p class="subtitle">All the moments you’ve chosen to keep, in one place.</p></div><span class="collection-count">{{ library.favorites().length }} <small>saved</small></span></div>
+      @if (library.favorites().length) {
+        <section class="favorite-grid" aria-label="Favorite photos">
+          @for (photo of library.favorites(); track photo.id; let index = $index) {
+            <a class="favorite-card" [routerLink]="['/photos', photo.id]" [class.tall]="index % 5 === 1 || index % 5 === 4" [attr.aria-label]="'Open ' + photo.alt">
+              <img [src]="photo.url" [alt]="photo.alt" loading="lazy">
+              <span class="image-shade"></span><span class="open-label"><mat-icon>open_in_full</mat-icon>View photo</span>
+            </a>
+          }
+        </section>
+      } @else {
+        <div class="empty-state"><span class="empty-icon"><mat-icon>favorite_border</mat-icon></span><h2>A collection starts with one.</h2><p>When a photo catches your eye, save it here for later.</p><a mat-flat-button routerLink="/">Explore the photo stream</a></div>
+      }
+    </section>
+  `,
+  styleUrl: './favorites.component.scss',
+})
+export class FavoritesComponent { readonly library = inject(PhotoLibraryService); }

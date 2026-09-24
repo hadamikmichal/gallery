@@ -1,0 +1,7 @@
+@use '@angular/material' as mat;
+
+html { color-scheme: light; @include mat.theme((color: (theme-type: light, primary: mat.$green-palette, tertiary: mat.$orange-palette), typography: 'DM Sans', density: 0)); }
+* { box-sizing: border-box; }
+body { min-width: 320px; margin: 0; background: #f7f6f2; color: #282923; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { background: #dce2d6; color: #26382c; }
