@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 32px 24px 0;
 }
+
 .back-link {
   display: inline-flex;
   align-items: center;
@@ -10,12 +11,14 @@
   color: #828177;
   font-size: 11px;
   text-decoration: none;
+
+  mat-icon {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+  }
 }
-.back-link mat-icon {
-  width: 16px;
-  height: 16px;
-  font-size: 16px;
-}
+
 .photo-view {
   position: relative;
   display: flex;
@@ -24,61 +27,75 @@
   min-height: min(76vh, 800px);
   margin: 24px auto 0;
   padding: 0 290px 0 0;
+
+  img {
+    max-width: 100%;
+    max-height: min(76vh, 800px);
+    object-fit: contain;
+    border-radius: 3px;
+    box-shadow: 0 16px 55px #25251d17;
+  }
 }
-.photo-view img {
-  max-width: 100%;
-  max-height: min(76vh, 800px);
-  object-fit: contain;
-  border-radius: 3px;
-  box-shadow: 0 16px 55px #25251d17;
-}
+
 .photo-caption {
   position: absolute;
   right: 50px;
   top: 50%;
   width: 220px;
   transform: translateY(-50%);
+
+  h1 {
+    margin: 13px 0 21px;
+    color: #282923;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 33px;
+    font-weight: 500;
+    line-height: 1.18;
+  }
+
+  button {
+    border-radius: 3px;
+    background: #344a3c;
+    color: white;
+    font-size: 11px;
+
+    mat-icon {
+      width: 17px;
+      height: 17px;
+      font-size: 17px;
+    }
+  }
 }
+
 .eyebrow {
   color: #929188;
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 1.5px;
 }
-.photo-caption h1,
-.missing-photo h1 {
-  margin: 13px 0 21px;
-  color: #282923;
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 33px;
-  font-weight: 500;
-  line-height: 1.18;
-}
-.photo-caption button {
-  border-radius: 3px;
-  background: #344a3c;
-  color: white;
-  font-size: 11px;
-}
-.photo-caption button mat-icon {
-  width: 17px;
-  height: 17px;
-  font-size: 17px;
-}
+
 .missing-photo {
   min-height: 55vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  h1 {
+    margin: 13px 0 21px;
+    color: #282923;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.18;
+  }
 }
-.missing-photo h1 {
-  font-size: 30px;
-}
+
 @media (max-width: 760px) {
   .detail-page {
     padding: 23px 16px 0;
   }
+
   .photo-view {
     min-height: unset;
     flex-direction: column;
@@ -86,21 +103,24 @@
     gap: 21px;
     margin-top: 18px;
     padding: 0;
+
+    img {
+      width: 100%;
+      max-height: 66vh;
+      object-fit: contain;
+      background: #eceae4;
+    }
   }
-  .photo-view img {
-    width: 100%;
-    max-height: 66vh;
-    object-fit: contain;
-    background: #eceae4;
-  }
+
   .photo-caption {
     position: static;
     width: auto;
     transform: none;
     padding-bottom: 15px;
-  }
-  .photo-caption h1 {
-    margin: 8px 0 14px;
-    font-size: 27px;
+
+    h1 {
+      margin: 8px 0 14px;
+      font-size: 27px;
+    }
   }
 }

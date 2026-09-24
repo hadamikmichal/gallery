@@ -3,22 +3,26 @@
   margin: 0 auto;
   padding: 65px 24px 36px;
 }
+
 .eyebrow {
   margin: 0 0 17px;
   color: #929188;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 1.7px;
+
+  span {
+    padding: 0 5px;
+    color: #b8b5a9;
+  }
 }
-.eyebrow span {
-  padding: 0 5px;
-  color: #b8b5a9;
-}
+
 .intro-line {
   display: flex;
   justify-content: space-between;
   align-items: end;
 }
+
 h1 {
   margin: 0;
   color: #282923;
@@ -27,23 +31,27 @@ h1 {
   font-weight: 500;
   letter-spacing: -1.8px;
   line-height: 1.12;
+
+  em {
+    color: #75836b;
+    font-weight: 500;
+  }
 }
-h1 em {
-  color: #75836b;
-  font-weight: 500;
-}
+
 .photo-count {
   margin: 0 5px 3px 0;
   color: #9a988f;
   font-size: 10px;
   line-height: 1.7;
   text-align: right;
+
+  span {
+    color: #44483c;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 23px;
+  }
 }
-.photo-count span {
-  color: #44483c;
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 23px;
-}
+
 .photo-grid {
   max-width: 1290px;
   margin: 0 auto;
@@ -53,11 +61,17 @@ h1 em {
   gap: 15px;
   align-items: start;
 }
+
 .photo-card {
   overflow: hidden;
   border-radius: 4px;
   background: #e7e4dc;
+
+  &.tall .photo-action {
+    height: 356px;
+  }
 }
+
 .photo-action {
   position: relative;
   display: block;
@@ -69,10 +83,28 @@ h1 em {
   background: #e7e4dc;
   cursor: pointer;
   text-align: left;
+
+  &:hover {
+    img {
+      transform: scale(1.035);
+    }
+
+    .image-shade {
+      opacity: 1;
+    }
+
+    .save-chip {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  &:focus-visible .save-chip {
+    opacity: 1;
+    transform: none;
+  }
 }
-.photo-card.tall .photo-action {
-  height: 356px;
-}
+
 img {
   display: block;
   width: 100%;
@@ -80,9 +112,7 @@ img {
   object-fit: cover;
   transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
-.photo-action:hover img {
-  transform: scale(1.035);
-}
+
 .image-shade {
   position: absolute;
   inset: 45% 0 0;
@@ -90,9 +120,7 @@ img {
   background: linear-gradient(transparent, #1118);
   transition: opacity 0.2s;
 }
-.photo-action:hover .image-shade {
-  opacity: 1;
-}
+
 .save-chip {
   position: absolute;
   left: 14px;
@@ -113,22 +141,20 @@ img {
   transition:
     opacity 0.2s,
     transform 0.2s;
+
+  mat-icon {
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+  }
+
+  &.saved {
+    color: #a75b4d;
+    opacity: 1;
+    transform: none;
+  }
 }
-.save-chip mat-icon {
-  width: 14px;
-  height: 14px;
-  font-size: 14px;
-}
-.save-chip.saved {
-  color: #a75b4d;
-  opacity: 1;
-  transform: none;
-}
-.photo-action:hover .save-chip,
-.photo-action:focus-visible .save-chip {
-  opacity: 1;
-  transform: none;
-}
+
 .photo-index {
   position: absolute;
   top: 12px;
@@ -138,6 +164,7 @@ img {
   letter-spacing: 1px;
   text-shadow: 0 1px 5px #0008;
 }
+
 .loader-area {
   display: flex;
   min-height: 80px;
@@ -147,55 +174,73 @@ img {
   color: #99978e;
   font-size: 11px;
   letter-spacing: 0.2px;
+
+  mat-spinner {
+    --mdc-circular-progress-active-indicator-color: #73816b;
+  }
 }
-.loader-area mat-spinner {
-  --mdc-circular-progress-active-indicator-color: #73816b;
-}
+
 .end-mark {
   color: #849077;
   font-size: 18px;
 }
+
 @media (max-width: 900px) {
   .photo-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 11px;
   }
+
   .photo-action {
     height: 250px;
   }
-  .photo-card.tall .photo-action {
-    height: 310px;
+
+  .photo-card {
+    &.tall .photo-action {
+      height: 310px;
+    }
   }
 }
+
 @media (max-width: 620px) {
   .page-intro {
     padding: 42px 18px 25px;
   }
+
   .intro-line {
     align-items: end;
   }
+
   h1 {
     font-size: 38px;
   }
+
   .subtitle {
     max-width: 270px;
     font-size: 12px;
     line-height: 1.6;
   }
+
   .photo-count {
     display: none;
   }
+
   .photo-grid {
     padding: 0 12px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
   }
+
   .photo-action {
     height: 245px;
   }
-  .photo-card.tall .photo-action {
-    height: 300px;
+
+  .photo-card {
+    &.tall .photo-action {
+      height: 300px;
+    }
   }
+
   .save-chip {
     bottom: 9px;
     left: 9px;

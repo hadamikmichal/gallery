@@ -1,6 +1,7 @@
 .app-shell {
   min-height: 100vh;
 }
+
 .topbar {
   height: 76px;
   display: grid;
@@ -10,6 +11,7 @@
   border-bottom: 1px solid #e9e7df;
   background: rgba(250, 249, 246, 0.92);
 }
+
 .wordmark {
   display: inline-flex;
   align-items: center;
@@ -20,38 +22,43 @@
   font-size: 20px;
   letter-spacing: -0.5px;
   width: max-content;
+
+  &-mark {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #2f493a;
+    color: #fff;
+    font-size: 18px;
+    font-style: italic;
+  }
 }
-.wordmark-mark {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #2f493a;
-  color: #fff;
-  font-size: 18px;
-  font-style: italic;
-}
+
 .view-switch {
   display: flex;
   gap: 7px;
   padding: 4px;
   border-radius: 999px;
   background: #efeee8;
+
+  a {
+    min-width: 96px;
+    border-radius: 999px;
+    color: #77766f;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+
+    &.active {
+      background: #fff;
+      color: #283d30;
+      box-shadow: 0 1px 5px #25241b12;
+    }
+  }
 }
-.view-switch a {
-  min-width: 96px;
-  border-radius: 999px;
-  color: #77766f;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-}
-.view-switch a.active {
-  background: #fff;
-  color: #283d30;
-  box-shadow: 0 1px 5px #25241b12;
-}
+
 .topbar-note {
   justify-self: end;
   display: flex;
@@ -61,12 +68,14 @@
   font-size: 11px;
   letter-spacing: 0.3px;
 }
+
 .status-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: #a6b498;
 }
+
 .site-footer {
   max-width: 1440px;
   margin: 66px auto 0;
@@ -77,30 +86,37 @@
   border-top: 1px solid #e9e7df;
   font-size: 10px;
   letter-spacing: 0.8px;
+
+  span:first-child {
+    font-weight: 700;
+    letter-spacing: 1.6px;
+  }
 }
-.site-footer span:first-child {
-  font-weight: 700;
-  letter-spacing: 1.6px;
-}
+
 @media (max-width: 600px) {
   .topbar {
     height: 66px;
     grid-template-columns: 1fr auto;
     padding: 0 17px;
   }
+
   .wordmark {
     font-size: 17px;
+
+    &-mark {
+      width: 27px;
+      height: 27px;
+    }
   }
-  .wordmark-mark {
-    width: 27px;
-    height: 27px;
-  }
+
   .topbar-note {
     display: none;
   }
+
   .view-switch a {
     min-width: 82px;
   }
+
   .site-footer {
     margin-top: 42px;
     padding: 18px 20px 24px;
