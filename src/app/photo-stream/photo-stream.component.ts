@@ -9,31 +9,7 @@ import { PhotoLibraryService } from '../photo-library.service';
   selector: 'app-photo-stream',
   standalone: true,
   imports: [MatButtonModule, MatIconModule, MatProgressSpinnerModule],
-  template: `
-    <section class="page-intro">
-      <p class="eyebrow">THE DAILY EDIT <span>·</span> NO. 001</p>
-      <div class="intro-line">
-        <div><h1>Find a little <em>inspiration.</em></h1><p class="subtitle">A never-ending collection of moments, places, and things worth keeping.</p></div>
-        <p class="photo-count"><span>{{ photos().length }}</span> moments<br>and counting</p>
-      </div>
-    </section>
-    <section class="photo-grid" aria-label="Random photo stream">
-      @for (photo of photos(); track photo.id; let index = $index) {
-        <article class="photo-card" [class.tall]="index % 5 === 1 || index % 5 === 4">
-          <button class="photo-action" type="button" (click)="save(photo)" [attr.aria-label]="savedIds().has(photo.id) ? 'Saved to favorites' : 'Add photo to favorites'">
-            <img [src]="photo.url" [alt]="photo.alt" loading="lazy" (error)="markImageUnavailable(photo.id)">
-            <span class="image-shade"></span>
-            <span class="save-chip" [class.saved]="savedIds().has(photo.id)"><mat-icon>{{ savedIds().has(photo.id) ? 'favorite' : 'add' }}</mat-icon>{{ savedIds().has(photo.id) ? 'Saved' : 'Keep this' }}</span>
-            <span class="photo-index">{{ (index + 1).toString().padStart(2, '0') }}</span>
-          </button>
-        </article>
-      }
-    </section>
-    <div class="loader-area" #sentinel aria-live="polite">
-      @if (loading()) { <mat-spinner diameter="27" aria-label="Loading more photos" /><span>Finding more to love</span> }
-      @else { <span class="end-mark">✳</span><span>There’s always more to discover</span> }
-    </div>
-  `,
+  templateUrl: './photo-stream.component.html',
   styleUrl: './photo-stream.component.scss',
 })
 export class PhotoStreamComponent implements AfterViewInit, OnDestroy {
